@@ -10,7 +10,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth:sanctum'])->group(function () {
+// Route::middleware(['auth:sanctum'])->group(function () {
 
     // Users
     // Route::controller(UserController::class)->group(function () {
@@ -29,4 +29,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/product/{id}', 'update');
         Route::delete('/product/{id}', 'destroy');
     });
-});
+// });

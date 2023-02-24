@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use DataTables;
 
 class ProductController extends Controller
 {
-    
+
     public function index()
     {
-        $producs = Product::all();
-        return $producs;
+        $model = Product::query();
+        return DataTables::of($model)->toJson();
     }
-    
+
     public function store(Request $request)
     {
         $product = new Product();
@@ -24,13 +25,13 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->save();
     }
-    
+
     public function show($id)
     {
         $product = Product::find($id);
         return $product;
     }
-    
+
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($request->id);
@@ -41,7 +42,7 @@ class ProductController extends Controller
         $product->save();
         return $product;
     }
-    
+
     public function destroy($id)
     {
         $product = Product::destroy($id);
