@@ -11,7 +11,7 @@ class ProductController extends Controller
     
     public function index()
     {
-        $producs = Product::all();;
+        $producs = Product::all();
         return $producs;
     }
     
