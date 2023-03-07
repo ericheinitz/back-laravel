@@ -10,7 +10,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
 
     // Users
     // Route::controller(UserController::class)->group(function () {
@@ -23,10 +23,10 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
     // Products
     Route::controller(ProductController::class)->group(function () {
-        Route::get('/products', 'index');
+        Route::post('/products', 'index');
         Route::post('/product', 'store');
         Route::get('/product/{id}', 'show');
         Route::put('/product/{id}', 'update');
         Route::delete('/product/{id}', 'destroy');
     });
-// });
+});
